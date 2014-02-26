@@ -1,0 +1,68 @@
+[
+  {
+    "op": "core/column-addition-by-fetching-urls",
+    "description": "Create column geocode_result at index 2 by fetching URLs based on column 2geocode using expression grel:'http://maps.googleapis.com/maps/api/geocode/json?sensor=false&address=' + escape(value, 'url')'",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "newColumnName": "geocode_result",
+    "columnInsertIndex": 2,
+    "baseColumnName": "2geocode",
+    "urlExpression": "grel:'http://maps.googleapis.com/maps/api/geocode/json?sensor=false&address=' + escape(value, 'url')'",
+    "onError": "set-to-blank",
+    "delay": 500
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column latitude at index 3 based on column geocode_result using expression grel:value.parseJson()[\"results\"][0][\"geometry\"][\"location\"][\"lat\"]",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "newColumnName": "latitude",
+    "columnInsertIndex": 3,
+    "baseColumnName": "geocode_result",
+    "expression": "grel:value.parseJson()[\"results\"][0][\"geometry\"][\"location\"][\"lat\"]",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column longitude at index 3 based on column geocode_result using expression grel:value.parseJson()[\"results\"][0][\"geometry\"][\"location\"][\"lng\"]",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "newColumnName": "longitude",
+    "columnInsertIndex": 3,
+    "baseColumnName": "geocode_result",
+    "expression": "grel:value.parseJson()[\"results\"][0][\"geometry\"][\"location\"][\"lng\"]",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column location_type at index 3 based on column geocode_result using expression grel:value.parseJson()[\"results\"][0][\"geometry\"][\"location_type\"]",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "newColumnName": "location_type",
+    "columnInsertIndex": 3,
+    "baseColumnName": "geocode_result",
+    "expression": "grel:value.parseJson()[\"results\"][0][\"geometry\"][\"location_type\"]",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column types at index 3 based on column geocode_result using expression grel:value.parseJson()[\"results\"][0][\"types\"][0]",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "newColumnName": "types",
+    "columnInsertIndex": 3,
+    "baseColumnName": "geocode_result",
+    "expression": "grel:value.parseJson()[\"results\"][0][\"types\"][0]",
+    "onError": "set-to-blank"
+  }
+]
