@@ -64,5 +64,31 @@
     "baseColumnName": "geocode_result",
     "expression": "grel:value.parseJson()[\"results\"][0][\"types\"][0]",
     "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column status at index 3 based on column geocode_result using expression grel:value.parseJson()[\"status\"]",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "newColumnName": "status",
+    "columnInsertIndex": 3,
+    "baseColumnName": "geocode_result",
+    "expression": "grel:value.parseJson()[\"status\"]",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column formatted_address at index 3 based on column geocode_result using expression grel:value.parseJson()[\"results\"][0][\"formatted_address\"]",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "newColumnName": "formatted_address",
+    "columnInsertIndex": 3,
+    "baseColumnName": "geocode_result",
+    "expression": "grel:value.parseJson()[\"results\"][0][\"formatted_address\"]",
+    "onError": "set-to-blank"
   }
 ]
