@@ -52,4 +52,4 @@ Il limite di richieste possibili tramite Google Maps è di 2500 record al giorno
 Qui un video in cui tutta la procedura è replicata rapidamente: [http://youtu.be/YWHRQt8T_Ns?hd=1](http://youtu.be/YWHRQt8T_Ns?hd=1)
 
 
-![geocode_openrefine_google.jpg](/imgs/geocode_openrefine_google.jpg) 
+![geocode_openrefine_google.jpg](https://raw.githubusercontent.com/aborruso/geocode_openrefine/master/Google/imgs/geocode_openrefine_google.jpg) 
