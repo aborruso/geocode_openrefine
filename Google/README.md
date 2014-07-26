@@ -50,3 +50,6 @@ I dati di partenza andrebbero sempre puliti e filtrati prima di eseguire la proc
 Il limite di richieste possibili tramite Google Maps è di 2500 record al giorno dallo stesso IP e la licenza delle API non si presta per la produzione di dati aperti. 
 
 Qui un video in cui tutta la procedura è replicata rapidamente: [http://youtu.be/YWHRQt8T_Ns?hd=1](http://youtu.be/YWHRQt8T_Ns?hd=1)
+
+
+![geocode_openrefine_google.jpg](/imgs/geocode_openrefine_google.jpg) 
