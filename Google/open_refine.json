@@ -3,8 +3,8 @@
     "op": "core/column-addition-by-fetching-urls",
     "description": "Create column geocode_result at index 2 by fetching URLs based on column 2geocode using expression grel:'http://maps.googleapis.com/maps/api/geocode/json?sensor=false&address=' + escape(value, 'url')'",
     "engineConfig": {
-      "facets": [],
-      "mode": "row-based"
+      "mode": "row-based",
+      "facets": []
     },
     "newColumnName": "geocode_result",
     "columnInsertIndex": 2,
@@ -17,8 +17,8 @@
     "op": "core/column-addition",
     "description": "Create column latitude at index 3 based on column geocode_result using expression grel:value.parseJson()[\"results\"][0][\"geometry\"][\"location\"][\"lat\"]",
     "engineConfig": {
-      "facets": [],
-      "mode": "row-based"
+      "mode": "row-based",
+      "facets": []
     },
     "newColumnName": "latitude",
     "columnInsertIndex": 3,
@@ -30,8 +30,8 @@
     "op": "core/column-addition",
     "description": "Create column longitude at index 3 based on column geocode_result using expression grel:value.parseJson()[\"results\"][0][\"geometry\"][\"location\"][\"lng\"]",
     "engineConfig": {
-      "facets": [],
-      "mode": "row-based"
+      "mode": "row-based",
+      "facets": []
     },
     "newColumnName": "longitude",
     "columnInsertIndex": 3,
@@ -43,8 +43,8 @@
     "op": "core/column-addition",
     "description": "Create column location_type at index 3 based on column geocode_result using expression grel:value.parseJson()[\"results\"][0][\"geometry\"][\"location_type\"]",
     "engineConfig": {
-      "facets": [],
-      "mode": "row-based"
+      "mode": "row-based",
+      "facets": []
     },
     "newColumnName": "location_type",
     "columnInsertIndex": 3,
@@ -56,8 +56,8 @@
     "op": "core/column-addition",
     "description": "Create column types at index 3 based on column geocode_result using expression grel:value.parseJson()[\"results\"][0][\"types\"][0]",
     "engineConfig": {
-      "facets": [],
-      "mode": "row-based"
+      "mode": "row-based",
+      "facets": []
     },
     "newColumnName": "types",
     "columnInsertIndex": 3,
@@ -69,8 +69,8 @@
     "op": "core/column-addition",
     "description": "Create column status at index 3 based on column geocode_result using expression grel:value.parseJson()[\"status\"]",
     "engineConfig": {
-      "facets": [],
-      "mode": "row-based"
+      "mode": "row-based",
+      "facets": []
     },
     "newColumnName": "status",
     "columnInsertIndex": 3,
@@ -82,13 +82,91 @@
     "op": "core/column-addition",
     "description": "Create column formatted_address at index 3 based on column geocode_result using expression grel:value.parseJson()[\"results\"][0][\"formatted_address\"]",
     "engineConfig": {
-      "facets": [],
-      "mode": "row-based"
+      "mode": "row-based",
+      "facets": []
     },
     "newColumnName": "formatted_address",
     "columnInsertIndex": 3,
     "baseColumnName": "geocode_result",
     "expression": "grel:value.parseJson()[\"results\"][0][\"formatted_address\"]",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column locality at index 3 based on column geocode_result using expression grel:filter(value.parseJson().results[0].address_components,item,contains(item[\"types\"][0],\"locality\"))[0][\"long_name\"]",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "newColumnName": "locality",
+    "columnInsertIndex": 3,
+    "baseColumnName": "geocode_result",
+    "expression": "grel:filter(value.parseJson().results[0].address_components,item,contains(item[\"types\"][0],\"locality\"))[0][\"long_name\"]",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column aa_2 at index 3 based on column geocode_result using expression grel:filter(value.parseJson().results[0].address_components,item,contains(item[\"types\"][0],\"administrative_area_level_2\"))[0][\"long_name\"]",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "newColumnName": "aa_2",
+    "columnInsertIndex": 3,
+    "baseColumnName": "geocode_result",
+    "expression": "grel:filter(value.parseJson().results[0].address_components,item,contains(item[\"types\"][0],\"administrative_area_level_2\"))[0][\"long_name\"]",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column aa_1 at index 3 based on column geocode_result using expression grel:filter(value.parseJson().results[0].address_components,item,contains(item[\"types\"][0],\"administrative_area_level_1\"))[0][\"long_name\"]",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "newColumnName": "aa_1",
+    "columnInsertIndex": 3,
+    "baseColumnName": "geocode_result",
+    "expression": "grel:filter(value.parseJson().results[0].address_components,item,contains(item[\"types\"][0],\"administrative_area_level_1\"))[0][\"long_name\"]",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column country_long at index 3 based on column geocode_result using expression grel:filter(value.parseJson().results[0].address_components,item,contains(item[\"types\"][0],\"country\"))[0][\"long_name\"]",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "newColumnName": "country_long",
+    "columnInsertIndex": 3,
+    "baseColumnName": "geocode_result",
+    "expression": "grel:filter(value.parseJson().results[0].address_components,item,contains(item[\"types\"][0],\"country\"))[0][\"long_name\"]",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column country at index 3 based on column geocode_result using expression grel:filter(value.parseJson().results[0].address_components,item,contains(item[\"types\"][0],\"country\"))[0][\"short_name\"]",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "newColumnName": "country",
+    "columnInsertIndex": 3,
+    "baseColumnName": "geocode_result",
+    "expression": "grel:filter(value.parseJson().results[0].address_components,item,contains(item[\"types\"][0],\"country\"))[0][\"short_name\"]",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column postal_code at index 3 based on column geocode_result using expression grel:filter(value.parseJson().results[0].address_components,item,contains(item[\"types\"][0],\"postal_code\"))[0][\"short_name\"]",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "newColumnName": "postal_code",
+    "columnInsertIndex": 3,
+    "baseColumnName": "geocode_result",
+    "expression": "grel:filter(value.parseJson().results[0].address_components,item,contains(item[\"types\"][0],\"postal_code\"))[0][\"short_name\"]",
     "onError": "set-to-blank"
   }
 ]
