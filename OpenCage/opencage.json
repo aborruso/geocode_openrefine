@@ -1,0 +1,146 @@
+[
+  {
+    "op": "core/column-addition-by-fetching-urls",
+    "description": "Create column json at index 4 by fetching URLs based on column 2geocode using expression grel:\"https://api.opencagedata.com/geocode/v1/json?key=INSERT_YOUR_API&language=it&query=\" + value",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "newColumnName": "json",
+    "columnInsertIndex": 4,
+    "baseColumnName": "2geocode",
+    "urlExpression": "grel:\"https://api.opencagedata.com/geocode/v1/json?key=INSERT_YOUR_API&language=it&query=\" + value",
+    "onError": "set-to-blank",
+    "delay": 500
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column risultati at index 5 based on column json using expression grel:value.parseJson()[\"total_results\"]",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "newColumnName": "risultati",
+    "columnInsertIndex": 5,
+    "baseColumnName": "json",
+    "expression": "grel:value.parseJson()[\"total_results\"]",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column confidence at index 5 based on column json using expression grel:value.parseJson()[\"results\"][0][\"confidence\"]",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "newColumnName": "confidence",
+    "columnInsertIndex": 5,
+    "baseColumnName": "json",
+    "expression": "grel:value.parseJson()[\"results\"][0][\"confidence\"]",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column type at index 5 based on column json using expression grel:value.parseJson()[\"results\"][0][\"components\"][\"_type\"]",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "newColumnName": "type",
+    "columnInsertIndex": 5,
+    "baseColumnName": "json",
+    "expression": "grel:value.parseJson()[\"results\"][0][\"components\"][\"_type\"]",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column OSM_URL at index 5 based on column json using expression grel:value.parseJson()[\"results\"][0][\"annotations\"][\"OSM\"][\"url\"]",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "newColumnName": "OSM_URL",
+    "columnInsertIndex": 5,
+    "baseColumnName": "json",
+    "expression": "grel:value.parseJson()[\"results\"][0][\"annotations\"][\"OSM\"][\"url\"]",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column latitude at index 5 based on column json using expression grel:value.parseJson()[\"results\"][0][\"geometry\"][\"lat\"]",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "newColumnName": "latitude",
+    "columnInsertIndex": 5,
+    "baseColumnName": "json",
+    "expression": "grel:value.parseJson()[\"results\"][0][\"geometry\"][\"lat\"]",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column longitude at index 5 based on column json using expression grel:value.parseJson()[\"results\"][0][\"geometry\"][\"lng\"]",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "newColumnName": "longitude",
+    "columnInsertIndex": 5,
+    "baseColumnName": "json",
+    "expression": "grel:value.parseJson()[\"results\"][0][\"geometry\"][\"lng\"]",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column IndirizzoFormattato at index 5 based on column json using expression grel:value.parseJson()[\"results\"][0][\"formatted\"]",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "newColumnName": "IndirizzoFormattato",
+    "columnInsertIndex": 5,
+    "baseColumnName": "json",
+    "expression": "grel:value.parseJson()[\"results\"][0][\"formatted\"]",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column county at index 5 based on column json using expression grel:value.parseJson()[\"results\"][0][\"components\"][\"county\"]",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "newColumnName": "county",
+    "columnInsertIndex": 5,
+    "baseColumnName": "json",
+    "expression": "grel:value.parseJson()[\"results\"][0][\"components\"][\"county\"]",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column hamlet at index 5 based on column json using expression grel:value.parseJson()[\"results\"][0][\"components\"][\"hamlet\"]",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "newColumnName": "hamlet",
+    "columnInsertIndex": 5,
+    "baseColumnName": "json",
+    "expression": "grel:value.parseJson()[\"results\"][0][\"components\"][\"hamlet\"]",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column state at index 5 based on column json using expression grel:value.parseJson()[\"results\"][0][\"components\"][\"state\"]",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "newColumnName": "state",
+    "columnInsertIndex": 5,
+    "baseColumnName": "json",
+    "expression": "grel:value.parseJson()[\"results\"][0][\"components\"][\"state\"]",
+    "onError": "set-to-blank"
+  }
+]
