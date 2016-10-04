@@ -9,7 +9,7 @@
     "newColumnName": "json",
     "columnInsertIndex": 4,
     "baseColumnName": "2geocode",
-    "urlExpression": "grel:\"https://api.opencagedata.com/geocode/v1/json?key=INSERT_YOUR_API&language=it&query=\" + value",
+    "urlExpression": "grel:\"https://api.opencagedata.com/geocode/v1/json?key=22b8723399049df196eb0dd35dbf83b6&language=it&query=\" + escape(value,\"url\")",
     "onError": "set-to-blank",
     "delay": 500
   },
