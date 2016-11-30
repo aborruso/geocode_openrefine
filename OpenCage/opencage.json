@@ -1,7 +1,7 @@
 [
   {
     "op": "core/column-addition-by-fetching-urls",
-    "description": "Create column json at index 4 by fetching URLs based on column 2geocode using expression grel:\"https://api.opencagedata.com/geocode/v1/json?key=INSERT_YOUR_API&language=it&query=\" + value",
+    "description": "Create column json at index 4 by fetching URLs based on column 2geocode using expression grel:\"https://api.opencagedata.com/geocode/v1/json?key=YourApiKey&language=it&query=\" + escape(value, 'url')'",
     "engineConfig": {
       "mode": "row-based",
       "facets": []
@@ -9,7 +9,7 @@
     "newColumnName": "json",
     "columnInsertIndex": 4,
     "baseColumnName": "2geocode",
-    "urlExpression": "grel:\"https://api.opencagedata.com/geocode/v1/json?key=INSERT_YOUR_API&language=it&query=\" + value",
+    "urlExpression": "grel:\"https://api.opencagedata.com/geocode/v1/json?key=YourApiKey&language=it&query=\" + escape(value, 'url')'",
     "onError": "set-to-blank",
     "delay": 500
   },
